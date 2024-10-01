@@ -1,1 +1,1 @@
-https://github.com/PolDe11a/ono-tebe-nado.git
+https://github.com/PolDe11a/posmotri_v_okno.git

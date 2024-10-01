@@ -6,7 +6,6 @@
 
 html {
   block-size: 100%;
-
   scrollbar-color: blue;
 }
 
@@ -18,6 +17,10 @@ html {
   font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   background-color: #1b1919;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  block-size: 100vh;
 }
 
 h1,
@@ -40,7 +43,7 @@ ol {
 }
 
 .content {
-  width: 100%;
+  inline-size: 100%;
   padding: 133px 30px;
   display: grid;
   grid-template-columns: 711px 399px;
@@ -49,15 +52,15 @@ ol {
 }
 
 .result__video-container {
-  margin-bottom: 16px;
-  width: 711px;
-  height: 386px;
+  margin-block-end: 16px;
+  inline-size: 711px;
+  block-size: 386px;
   position: relative;
 }
 
 .result__video {
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
   object-fit: cover;
 }
 
@@ -65,6 +68,7 @@ ol {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  block-size: 54px;
 }
 
 .search-form__fieldset {
@@ -73,7 +77,7 @@ ol {
 
 .search-form__fieldset-title {
   font-family: "Fira Sans Condensed", sans-serif;
-  margin-bottom: 5px;
+  margin-block-end: 5px;
   line-height: normal;
   font-weight: 400;
   font-size: 18px;
@@ -88,7 +92,7 @@ ol {
   appearance: none;
 }
 
-.search-form__label .search-form__label-text:hover {
+.search-form__label:hover .search-form__label-text {
   text-decoration: underline;
 }
 
@@ -102,7 +106,7 @@ ol {
 }
 
 .search-form__label-text {
-  font-family: "Fira Sans Condensed";
+  font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -113,15 +117,20 @@ ol {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  color: rgba(255, 255, 255, 0.7);
   font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   font-weight: 400;
   background-color: transparent;
   border: none;
-  border-top: 1px solid #ffffff;
-  border-bottom: 1px solid #ffffff;
-  width: 225px;
+  border-block-start: 1px solid currentColor;
+  border-block-end: 1px solid currentColor;
+  inline-size: 225px;
+  color: inherit;
+  margin-inline-start: 0;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .search-form__checkbox-list {
@@ -130,16 +139,16 @@ ol {
 }
 
 .search-form__pseudo-checkbox {
-  width: 19px;
-  height: 19px;
+  inline-size: 19px;
+  block-size: 19px;
   border: 1px solid white;
   position: relative;
 }
 
 .search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
   content: "";
-  width: 15px;
-  height: 15px;
+  inline-size: 15px;
+  block-size: 15px;
   background: #fff;
   position: absolute;
   inset: 1px;
@@ -151,14 +160,14 @@ ol {
   font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   font-weight: 700;
-  color: #fff;
+  color: inherit;
   background-color: transparent;
-  border: 1px solid #ffffff;
+  border: 1px solid currentColor;
 }
 
 .search-form__submit-button {
-  width: 194px;
-  height: 34px;
+  inline-size: 194px;
+  block-size: 34px;
   align-self: flex-end;
 }
 
@@ -179,13 +188,17 @@ button:focus-visible {
   outline-offset: 1px;
 }
 
+.content__details {
+  inline-size: 100%;
+}
+
 .title {
-  margin-bottom: 26px;
-  font-family: Oswald;
-  font-size: 75px;
+  padding: 0 0 26px;
+  font-family: Oswald, sans-serif;
   font-weight: 700;
-  text-transform: uppercase;
+  font-size: 75px;
   line-height: 94%;
+  text-transform: uppercase;
 }
 
 .content__accent {
@@ -193,24 +206,29 @@ button:focus-visible {
 }
 
 .content__list {
-  max-height: 298px;
+  block-size: 298px;
+  padding: 0;
+  inline-size: 394px;
   overflow: auto;
   position: relative;
 }
 
 .content__list-item:not(:last-of-type) {
-  margin-bottom: 30px;
+  margin-block-end: 30px;
 }
 
 .content__card-link {
-  text-decoration: none;
-  color: #fff;
   display: block;
+  margin: 2px;
+  text-decoration: none;
 }
 
-.content__card-link_current,
-.content__card-link_active {
+.content__card-link:active {
   background-color: #545050;
+}
+
+.content__card-link:hover {
+  text-decoration: underline 1px #fff;
 }
 
 .content__card-link:focus {
@@ -221,23 +239,22 @@ button:focus-visible {
   outline: 1px solid #fff;
 }
 
-.content__card-link:hover {
-  text-decoration: underline;
+.content__card-link_current {
+  background-color: #545050;
 }
 
 .content__video-card {
   display: flex;
-  align-items: flex-start;
   justify-content: space-between;
-  max-width: 394px;
 }
 
 .content__video-card-title {
-  font-family: "Oswald", sans-serif;
-  font-size: 30px;
+  margin-block-end: 6px;
+  color: #fff;
+  font-family: Oswald, sans-serif;
   font-weight: 700;
+  font-size: 30px;
   line-height: 100%;
-  margin-bottom: 6px;
   text-transform: uppercase;
   max-width: 150px;
   text-overflow: ellipsis;
@@ -246,23 +263,24 @@ button:focus-visible {
 }
 
 .content__video-card-description {
-  line-height: 90%;
+  color: #fff;
   font-weight: 400;
+  line-height: 90%;
   font-size: 18px;
-  width: 200px;
 }
 
 .content__video-card-thumbnail {
-  width: 194px;
-  max-height: 103px;
+  inline-size: 194px;
+  block-size: 103px;
   object-fit: cover;
   object-position: center;
 }
 
 .more-button {
-  width: 399px;
-  height: 34px;
+  inline-size: 100%;
+  block-size: 34px;
 }
+
 .visually-hidden {
   position: absolute;
   inline-size: 1px;
